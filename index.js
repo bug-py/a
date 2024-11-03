@@ -10,7 +10,7 @@ app.get("/",(req,res)=>{
 })
 io.on("connection",socket=>{
     user+=1
-    nom=user
+    let nom=user
     console.log("ici")
     socket.on("message",json=>{
         io.emit("message",{
@@ -21,7 +21,6 @@ io.on("connection",socket=>{
         })
     })
     socket.on("diconnect",()=>{
-     user-=1
      console.log("parti")
     })
 })
