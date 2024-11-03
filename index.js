@@ -9,19 +9,19 @@ app.get("/",(req,res)=>{
     
 })
 io.on("connection",socket=>{
-    user++
+    user+=1
     nom=user
     console.log("ici")
     socket.on("message",json=>{
         io.emit("message",{
          ms:Date.now()-json.date,
          message:json.message,
-         name:`Invité ${user}`,
+         name:`Invité ${nom}`,
          date:json.date
         })
     })
     socket.on("diconnect",()=>{
-     user--
+     user-=1
      console.log("parti")
     })
 })
